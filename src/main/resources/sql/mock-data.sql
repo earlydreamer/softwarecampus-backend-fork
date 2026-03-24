@@ -1,6 +1,4 @@
 
-use softcampus_db;
-
 -- --------------------------------------------------------------------
 -- Mock Data for Software Campus (deprecated)
 -- 작성일자: 2025-11-26
@@ -279,29 +277,29 @@ VALUES (3, 'EQUIPMENT', 4, '실습 환경 양호합니다', NOW(), NOW(), false)
 
 -- 9. CourseFavorite (과정 즐겨찾기)
 -- 사용자들의 과정 즐겨찾기
-INSERT INTO course_favorite (account_id, course_id, created_at, updated_at, is_deleted)
-VALUES (2, 1, NOW(), NOW(), false);
+INSERT INTO course_favorite (account_id, course_id, created_at, updated_at)
+VALUES (2, 1, NOW(), NOW());
 
-INSERT INTO course_favorite (account_id, course_id, created_at, updated_at, is_deleted)
-VALUES (2, 7, NOW(), NOW(), false);
+INSERT INTO course_favorite (account_id, course_id, created_at, updated_at)
+VALUES (2, 7, NOW(), NOW());
 
-INSERT INTO course_favorite (account_id, course_id, created_at, updated_at, is_deleted)
-VALUES (4, 2, NOW(), NOW(), false);
+INSERT INTO course_favorite (account_id, course_id, created_at, updated_at)
+VALUES (4, 2, NOW(), NOW());
 
-INSERT INTO course_favorite (account_id, course_id, created_at, updated_at, is_deleted)
-VALUES (4, 8, NOW(), NOW(), false);
+INSERT INTO course_favorite (account_id, course_id, created_at, updated_at)
+VALUES (4, 8, NOW(), NOW());
 
-INSERT INTO course_favorite (account_id, course_id, created_at, updated_at, is_deleted)
-VALUES (5, 7, NOW(), NOW(), false);
+INSERT INTO course_favorite (account_id, course_id, created_at, updated_at)
+VALUES (5, 7, NOW(), NOW());
 
-INSERT INTO course_favorite (account_id, course_id, created_at, updated_at, is_deleted)
-VALUES (5, 10, NOW(), NOW(), false);
+INSERT INTO course_favorite (account_id, course_id, created_at, updated_at)
+VALUES (5, 10, NOW(), NOW());
 
-INSERT INTO course_favorite (account_id, course_id, created_at, updated_at, is_deleted)
-VALUES (6, 8, NOW(), NOW(), false);
+INSERT INTO course_favorite (account_id, course_id, created_at, updated_at)
+VALUES (6, 8, NOW(), NOW());
 
-INSERT INTO course_favorite (account_id, course_id, created_at, updated_at, is_deleted)
-VALUES (6, 12, NOW(), NOW(), false);
+INSERT INTO course_favorite (account_id, course_id, created_at, updated_at)
+VALUES (6, 12, NOW(), NOW());
 
 
 -- 10. CourseCurriculum (과정 커리큘럼)

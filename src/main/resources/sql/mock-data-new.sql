@@ -1,5 +1,3 @@
-use softcampus_db;
-
 -- --------------------------------------------------------------------
 -- Mock Data for Software Campus (2025-12-02 기준 최신 스키마)
 -- --------------------------------------------------------------------
@@ -711,28 +709,28 @@ VALUES
     (20, 20, 'https://picsum.photos/seed/softwarecampus-course-20/1200/800', true, 'THUMBNAIL', 'course-20-thumb.jpg', NOW(), NOW(), false, NULL);
 
 -- 16. CourseFavorite (홈 베스트 노출용)
-INSERT INTO course_favorite (account_id, course_id, created_at, updated_at, is_deleted)
+INSERT INTO course_favorite (account_id, course_id, created_at, updated_at)
 VALUES
-    (3, 1, NOW(), NOW(), false), (4, 1, NOW(), NOW(), false),
-    (5, 2, NOW(), NOW(), false), (6, 2, NOW(), NOW(), false),
-    (7, 3, NOW(), NOW(), false), (8, 3, NOW(), NOW(), false),
-    (9, 4, NOW(), NOW(), false), (10, 4, NOW(), NOW(), false),
-    (11, 5, NOW(), NOW(), false), (12, 5, NOW(), NOW(), false),
-    (3, 6, NOW(), NOW(), false), (5, 6, NOW(), NOW(), false),
-    (4, 7, NOW(), NOW(), false), (6, 7, NOW(), NOW(), false),
-    (7, 8, NOW(), NOW(), false), (9, 8, NOW(), NOW(), false),
-    (8, 9, NOW(), NOW(), false), (10, 9, NOW(), NOW(), false),
-    (11, 10, NOW(), NOW(), false), (12, 10, NOW(), NOW(), false),
-    (3, 11, NOW(), NOW(), false), (7, 11, NOW(), NOW(), false),
-    (4, 12, NOW(), NOW(), false), (8, 12, NOW(), NOW(), false),
-    (5, 13, NOW(), NOW(), false), (9, 13, NOW(), NOW(), false),
-    (6, 14, NOW(), NOW(), false), (10, 14, NOW(), NOW(), false),
-    (3, 15, NOW(), NOW(), false), (11, 15, NOW(), NOW(), false),
-    (4, 16, NOW(), NOW(), false), (12, 16, NOW(), NOW(), false),
-    (5, 17, NOW(), NOW(), false), (7, 17, NOW(), NOW(), false),
-    (6, 18, NOW(), NOW(), false), (8, 18, NOW(), NOW(), false),
-    (9, 19, NOW(), NOW(), false), (11, 19, NOW(), NOW(), false),
-    (10, 20, NOW(), NOW(), false), (12, 20, NOW(), NOW(), false);
+    (3, 1, NOW(), NOW()), (4, 1, NOW(), NOW()),
+    (5, 2, NOW(), NOW()), (6, 2, NOW(), NOW()),
+    (7, 3, NOW(), NOW()), (8, 3, NOW(), NOW()),
+    (9, 4, NOW(), NOW()), (10, 4, NOW(), NOW()),
+    (11, 5, NOW(), NOW()), (12, 5, NOW(), NOW()),
+    (3, 6, NOW(), NOW()), (5, 6, NOW(), NOW()),
+    (4, 7, NOW(), NOW()), (6, 7, NOW(), NOW()),
+    (7, 8, NOW(), NOW()), (9, 8, NOW(), NOW()),
+    (8, 9, NOW(), NOW()), (10, 9, NOW(), NOW()),
+    (11, 10, NOW(), NOW()), (12, 10, NOW(), NOW()),
+    (3, 11, NOW(), NOW()), (7, 11, NOW(), NOW()),
+    (4, 12, NOW(), NOW()), (8, 12, NOW(), NOW()),
+    (5, 13, NOW(), NOW()), (9, 13, NOW(), NOW()),
+    (6, 14, NOW(), NOW()), (10, 14, NOW(), NOW()),
+    (3, 15, NOW(), NOW()), (11, 15, NOW(), NOW()),
+    (4, 16, NOW(), NOW()), (12, 16, NOW(), NOW()),
+    (5, 17, NOW(), NOW()), (7, 17, NOW(), NOW()),
+    (6, 18, NOW(), NOW()), (8, 18, NOW(), NOW()),
+    (9, 19, NOW(), NOW()), (11, 19, NOW(), NOW()),
+    (10, 20, NOW(), NOW()), (12, 20, NOW(), NOW());
 
 -- 17. Banner (메인 상단 배너)
 INSERT INTO banner (id, title, image_url, link_url, description, sequence, is_activated, created_at, updated_at, is_deleted, deleted_at)
