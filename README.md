@@ -2,6 +2,9 @@
 
 > ⚠️ **포트폴리오 고지**: 사이트 개발 중 채택되지 않은 B안으로, 포트폴리오 용도로 사용을 허가받았습니다.
 
+**Frontend** : https://github.com/earlydreamer/softwarecampus-frontend-fork
+
+
 ## 프로젝트 소개
 
 **소프트웨어캠퍼스**는 부트캠프 정보를 한눈에 보고, 실제 수료생의 인증 리뷰까지 확인할 수 있는 웹서비스입니다.
