@@ -915,8 +915,8 @@ VALUES
 -- 17. Banner (메인 상단 배너)
 INSERT INTO banner (id, title, image_url, link_url, description, sequence, is_activated, created_at, updated_at, is_deleted, deleted_at)
 VALUES
-    (1, '봄 시즌 취업예정자 집중 과정', 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=80', '/courses?categoryType=JOB_SEEKER', '웹개발, 모바일, 데이터/AI 트랙을 4월 개강 일정으로 확인해보세요.', 1, true, NOW(), NOW(), false, NULL),
-    (2, '재직자 야간·주말 업스킬링', 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=80', '/courses?categoryType=EMPLOYEE', '백엔드, 클라우드, 보안, DevOps 중심의 실무 심화 과정을 모았습니다.', 2, true, NOW(), NOW(), false, NULL),
+    (1, '봄 시즌 취업예정자 집중 과정', 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=80', '/lectures?target=student', '웹개발, 모바일, 데이터/AI 트랙을 4월 개강 일정으로 확인해보세요.', 1, true, NOW(), NOW(), false, NULL),
+    (2, '재직자 야간·주말 업스킬링', 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=80', '/lectures?target=employee', '백엔드, 클라우드, 보안, DevOps 중심의 실무 심화 과정을 모았습니다.', 2, true, NOW(), NOW(), false, NULL),
     (3, '기관별 추천 과정 둘러보기', 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=80', '/academies', '서울·판교·수원 주요 캠퍼스의 대표 과정을 한눈에 비교해보세요.', 3, true, NOW(), NOW(), false, NULL);
 
 -- End of mock data
