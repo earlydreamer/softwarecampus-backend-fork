@@ -11,6 +11,7 @@ package com.softwarecampus.backend.controller.common;
 
 import com.softwarecampus.backend.dto.common.FileDeleteResponse;
 import com.softwarecampus.backend.dto.common.FileUploadResponse;
+import com.softwarecampus.backend.exception.S3UploadException;
 import com.softwarecampus.backend.service.common.FileType;
 import com.softwarecampus.backend.service.common.S3Service;
 import lombok.RequiredArgsConstructor;
@@ -26,12 +27,16 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Pattern;
 
 @Slf4j
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
 public class FileController {
+
+    // 학원 등록 서류(academy/{academyId}/{파일})는 관리자 Presigned URL 전용이라 공개 프록시에서 제외
+    private static final Pattern PRIVATE_ACADEMY_FILE_KEY = Pattern.compile("^academy/\\d+/[^/]+$");
 
     private final S3Service s3Service;
 
@@ -94,6 +99,10 @@ public class FileController {
      */
     @GetMapping("/files/public")
     public ResponseEntity<byte[]> getPublicFile(@RequestParam("key") String key) {
+        if (PRIVATE_ACADEMY_FILE_KEY.matcher(key).matches()) {
+            log.warn("Private academy file requested via public proxy: {}", key);
+            throw new S3UploadException("파일을 찾을 수 없습니다.", S3UploadException.FailureReason.RESOURCE_NOT_FOUND);
+        }
         byte[] bytes = s3Service.downloadFile(key);
         String contentType = s3Service.getContentType(key);
         return ResponseEntity.ok()

@@ -414,6 +414,32 @@ class FileControllerTest {
                                 .andExpect(status().isInternalServerError());
         }
 
+        @Test
+        @DisplayName("공개 파일 서빙 실패 - 학원 등록 서류는 공개 프록시로 받을 수 없음 (404)")
+        void testGetPublicFile_PrivateAcademyFile() throws Exception {
+                // when & then
+                mockMvc.perform(get("/api/files/public")
+                                .param("key", "academy/1/business-license.pdf"))
+                                .andDo(print())
+                                .andExpect(status().isNotFound());
+
+                verify(s3Service, never()).downloadFile(anyString());
+        }
+
+        @Test
+        @DisplayName("공개 파일 서빙 성공 - 학원 프로필 이미지는 공개")
+        void testGetPublicFile_AcademyProfileImage() throws Exception {
+                // given
+                String key = "academy/1/profile/logo.png";
+                when(s3Service.downloadFile(key)).thenReturn("img".getBytes());
+                when(s3Service.getContentType(key)).thenReturn("image/png");
+
+                // when & then
+                mockMvc.perform(get("/api/files/public")
+                                .param("key", key))
+                                .andExpect(status().isOk());
+        }
+
         // ==================== 파일 삭제 테스트 ====================
 
         @Test
