@@ -106,7 +106,7 @@ src/
 
 ## API 문서 📄
 
-로컬 실행 후 아래 주소에서 확인할 수 있습니다.
+로컬 실행 후 아래 주소에서 확인할 수 있습니다. 기본 비활성이므로 `.env`에 `SPRINGDOC_ENABLED=true`를 설정해야 합니다.
 
 - Swagger UI: `http://localhost:8080/swagger-ui.html`
 - OpenAPI JSON: `http://localhost:8080/v3/api-docs`
