@@ -170,6 +170,9 @@ jobs:
             IdentityFile ~/.ssh/deploy_key
             StrictHostKeyChecking no
             UserKnownHostsFile /dev/null
+            # 출력 없는 대기(컨테이너 재생성·헬스체크) 중 cloudflared 세션이 끊기지 않도록 keepalive
+            ServerAliveInterval 30
+            ServerAliveCountMax 10
           EOF
 
       # 4. 배포 파일 준비 (로컬 러너)
@@ -226,11 +229,29 @@ jobs:
           echo "Deploying Backend..."
           cd \$DEPLOY_PATH
           docker compose pull softcampus-backend
-          docker compose down --remove-orphans
-          docker compose up -d --pull never
+          # down 없이 up: 이미지·설정이 바뀐 컨테이너(backend)만 재생성하고 MySQL·Redis는 유지
+          docker compose up -d --pull never --remove-orphans
 
           # ------------------------------------------------------------------
-          # Step 5: 정리
+          # Step 5: 헬스체크 (최대 3분)
+          # 공개 저장소 로그에 남지 않도록 실패 시 컨테이너 로그 대신 상태만 출력
+          # ------------------------------------------------------------------
+          PORT_NO=\$(grep -E '^PORT_NO=' .env | tail -1 | cut -d= -f2 | tr -d '\r"')
+          for i in \$(seq 1 36); do
+            if curl -fsS -o /dev/null "http://127.0.0.1:\$PORT_NO/api/banners"; then
+              echo "Backend healthy"
+              break
+            fi
+            if [ "\$i" -eq 36 ]; then
+              echo "Backend health check failed"
+              docker compose ps
+              exit 1
+            fi
+            sleep 5
+          done
+
+          # ------------------------------------------------------------------
+          # Step 6: 정리
           # ------------------------------------------------------------------
           docker image prune -f
           ENDSSH
